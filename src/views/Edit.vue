@@ -10,7 +10,7 @@
       </router-link>
     </div>
     <div class="row">
-      <form @submit.prevent="createdProject" class="col s12">
+      <form class="col s12" @submit.prevent="updatedProject">
         <div class="row">
           <div class="input-field col s12">
             <input
@@ -18,8 +18,9 @@
               type="text"
               class="validate"
               v-model="project.title"
+              placeholder="Nombre del proyecto"
             />
-            <label for="first_name">Nombre del Proyecto</label>
+            <label for="first_name"></label>
           </div>
           <div class="input-field col s12">
             <input
@@ -27,8 +28,9 @@
               type="text"
               class="validate"
               v-model="project.description"
+              placeholder="Descripcion del proyectos"
             />
-            <label for="last_name">Descripcion del Proyecto</label>
+            <label for="last_name"></label>
           </div>
           <p>
             <label>
@@ -93,24 +95,41 @@
 
 <script>
 export default {
-  data: () => ({
-    project: {
-      title: "",
-      description: "",
-      langs: [],
-      status: true,
-    },
-  }),
+  data() {
+    return {
+      project: {},
+      id: this.$route.params.id,
+    };
+  },
+  mounted() {
+    this.getProject();
+  },
   methods: {
-    async createdProject() {
-      await fetch(
-        "https://crud-vue-d38b6-default-rtdb.firebaseio.com/projects.json",
+    async getProject() {
+      //const id = this.$route.params.id;
+      //console.log(id);
+      const res = await fetch(
+        `https://crud-vue-d38b6-default-rtdb.firebaseio.com/projects/${this.id}.json`
+      );
+
+      const data = await res.json();
+      this.project = data;
+      console.log(this.$route.params.id);
+    },
+    async updatedProject() {
+      const res = await fetch(
+        `https://crud-vue-d38b6-default-rtdb.firebaseio.com/projects/${this.id}.json`,
         {
-          method: "POST",
+          method: "PATCH",
           body: JSON.stringify(this.project),
         }
       );
-      this.project = {};
+
+      const data = await res.json();
+
+      this.data.data.status = data["status"];
+
+      console.log(data);
     },
   },
 };

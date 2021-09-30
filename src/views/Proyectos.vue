@@ -4,7 +4,7 @@
     <hr />
     <div class="row">
       <router-link
-        to="/edit-projects"
+        to="/reg-projects"
         class="col s12 waves-effect waves-light btn amber darken-3"
         ><i class="material-icons">add</i>
         Crear Proyecto

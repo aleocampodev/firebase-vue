@@ -28,7 +28,10 @@ export default {
 
       for (let i in data) {
         //console.log(i);
-        this.projects.push(data[i]);
+        this.projects.push({
+          id: i,
+          data: data[i],
+        });
       }
 
       console.log(this.projects);

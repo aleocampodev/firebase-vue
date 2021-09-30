@@ -20,7 +20,7 @@ const routes = [
     path: "/proyectos",
     name: "Proyectos",
     // route level code-splitting
-    // this generates a separate chunk (proyectos.[hash].js) for this route
+    // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "proyectos" */ "../views/Proyectos.vue"),
@@ -35,13 +35,13 @@ const routes = [
       import(/* webpackChunkName: "reg-projects" */ "../views/Created.vue"),
   },
   {
-    path: "/edit-projects",
+    path: "/edit-project/:id",
     name: "Edit",
     // route level code-splitting
-    // this generates a separate chunk (edit-projects.[hash].js) for this route
+    // this generates a separate chunk (edit-project.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "reg-projects" */ "../views/Edit.vue"),
+      import(/* webpackChunkName: "edit-project" */ "../views/Edit.vue"),
   },
 ];
 

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <router-link
-        to="/projects"
+        to="/proyectos"
         class="col s12 waves-effect waves-light btn amber darken-3"
       >
         <i class="material-icons">arrow_back</i>
